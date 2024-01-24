@@ -9,5 +9,5 @@ def load_parameter(port, address):
 def read_data(bus, address):
     sensor_data = bme280.sample(bus, address)
     humidity = sensor_data.humidity
-    pressure = sensor_data.pressure
-    return humidity, pressure
+    temperature = sensor_data.temperature
+    return humidity, temperature
