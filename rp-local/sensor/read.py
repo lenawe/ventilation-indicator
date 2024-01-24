@@ -31,4 +31,3 @@ def read_data(bus, address):
     except Exception as e:
         print(f"Error reading data: {e}")
         return None
-

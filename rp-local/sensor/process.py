@@ -19,3 +19,4 @@ def get_payload_json(humidity, temperature):
             
     except ValueError as ve:
         raise ValueError("Humidity and temperature must be numbers.")
+    
