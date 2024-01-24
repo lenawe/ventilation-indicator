@@ -11,7 +11,12 @@ def load_parameter(port, address):
         return None
 
 def read_data(bus, address):
-    sensor_data = bme280.sample(bus, address)
-    humidity = sensor_data.humidity
-    temperature = sensor_data.temperature
-    return humidity, temperature
+    try:
+        sensor_data = bme280.sample(bus, address)
+        humidity = sensor_data.humidity
+        temperature = sensor_data.temperature
+        return humidity, temperature
+    except Exception as e:
+        print(f"Error reading data: {e}")
+        return None
+
