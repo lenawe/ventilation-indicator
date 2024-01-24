@@ -4,3 +4,4 @@ if __name__ == '__main__':
     address = 0x76
 
     bus = b_read.load_parameter(port, address)
+    humidity, pressure = b_read.read_data(bus, address)
