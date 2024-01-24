@@ -8,11 +8,14 @@ def get_payload_json(humidity, temperature):
     @return: A JSON payload.
     '''
     try:
+        humidity = float(humidity)
+        temperature = float(temperature)
+
         payload = {
             "humidity": humidity,
             "temperature": temperature
-        }
+        }   
         return json.dumps(payload)
-    except Exception as e:
-        print(f"Error occurred while processing payload: {e}")
-        return None
+            
+    except ValueError as ve:
+        raise ValueError("Humidity and temperature must be numbers.")
