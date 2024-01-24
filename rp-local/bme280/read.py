@@ -17,6 +17,12 @@ def load_parameter(port, address):
         return None
 
 def read_data(bus, address):
+    '''
+    Read the humidity and temperature values from the BME280 sensor.
+    @param bus: The bus object.
+    @param address: The address of the BME280 sensor.
+    @return: The humidity and temperature values.
+    '''
     try:
         sensor_data = bme280.sample(bus, address)
         humidity = sensor_data.humidity
