@@ -2,6 +2,12 @@ import smbus2
 import bme280
 
 def load_parameter(port, address):
+    '''
+    Load the calibration parameters from the BME280 sensor.
+    @param port: The port number of the I2C bus.
+    @param address: The address of the BME280 sensor.
+    @return: The bus object.
+    '''
     try:
         bus = smbus2.SMBus(port)
         bme280.load_calibration_params(bus, address)
