@@ -12,12 +12,17 @@ https://www.terraform-best-practices.com/examples/terraform/medium-size-infrastr
    ```
    cd terraform
    ```
-4. Initialize terraform:
+4. Initialize terraform in git bash:
    ```
    terraform init
    ```
-6. Check changes and apply them:
+6. Determine AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and execute in git bash:
+   ```
+   export AWS_ACCESS_KEY_ID=kEyId
+   export AWS_SECRET_ACCESS_KEY=aCeSsKeY
+   ```
+7. Check changes and apply them:
     ```
     terraform plan
-    terraform init
+    terraform apply
     ```
