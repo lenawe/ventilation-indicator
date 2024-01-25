@@ -1,0 +1,1 @@
+thing_name = "raspberrypi"
