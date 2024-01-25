@@ -1,0 +1,4 @@
+rp-local/__pycache__/
+rp-local/sensor/__pycache__/
+rp-local/test/__pycache__/
+.vscode/settings.json
