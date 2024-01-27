@@ -3,5 +3,5 @@ provider "aws" {
 }
 
 resource "aws_iot_thing" "this" {
-    name = var.thing_name
+    name = "thing_${var.thing_name}"
 }
