@@ -44,3 +44,8 @@ resource "aws_iot_certificate" "this" {
     certificate_pem = file(var.certificate_path)
     active = true
 }
+
+resource "aws_iot_thing_principal_attachment" "this" {
+    thing = aws_iot_thing.this.name
+    principal = aws_iot_certificate.this.arn
+}
