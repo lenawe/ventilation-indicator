@@ -19,3 +19,8 @@ def configure_mqtt_client(aws_endpoint, client_id, topic):
     mqtt_client.configureDrainingFrequency(2)
     mqtt_client.configureConnectDisconnectTimeout(10)
     mqtt_client.configureMQTTOperationTimeout(5)
+
+    # Connect to AWS IoT Core
+    mqtt_client.connect()
+
+    return mqtt_client
