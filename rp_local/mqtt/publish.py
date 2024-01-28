@@ -1,3 +1,5 @@
+from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
+
 def configure_mqtt_client(aws_endpoint, client_id, topic):
     # AWS IoT Core Configuration
     endpoint = aws_endpoint
@@ -6,3 +8,8 @@ def configure_mqtt_client(aws_endpoint, client_id, topic):
     key_path = "certs/private.pem.key" 
     client_id = client_id
     topic = topic
+
+    # Initialise AWS IoT MQTT Client
+    mqtt_client = AWSIoTMQTTClient(client_id)
+    mqtt_client.configureEndpoint(endpoint, 443)
+    mqtt_client.configureCredentials(root_ca_path, key_path, cert_path)
