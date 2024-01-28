@@ -17,4 +17,5 @@ module "lambda" {
     source = "./modules/lambda"
 
     thing_name = var.thing_name
+    connection_id = var.connection_id
 }

@@ -10,3 +10,40 @@ data "aws_iam_policy_document" "this" {
     actions = ["sts:AssumeRole"]
   }
 }
+
+resource "aws_iam_policy" "this" {
+    name = "policy_${var.thing_name}"
+    policy = jsonencode({
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "sns:Publish",
+                "Resource": "arn:aws:sns:*:*:*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "logs:CreateLogGroup",
+                "Resource": "arn:aws:logs:eu-north-1:${var.connection_id}:*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                ],
+                "Resource": [
+                    "arn:aws:logs:eu-north-1:${var.connection_id}:log-group:/aws/lambda/*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "ses:SendEmail",
+                    "ses:SendRawEmail"
+                ],
+                "Resource": "*"
+            }
+        ]
+    })
+}

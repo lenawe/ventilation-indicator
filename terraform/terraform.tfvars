@@ -1,3 +1,4 @@
 thing_name = "raspberrypi"
 
-certificate_path = ""
+
+connection_id = ""
