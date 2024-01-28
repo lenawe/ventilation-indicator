@@ -13,3 +13,9 @@ def configure_mqtt_client(aws_endpoint, client_id, topic):
     mqtt_client = AWSIoTMQTTClient(client_id)
     mqtt_client.configureEndpoint(endpoint, 443)
     mqtt_client.configureCredentials(root_ca_path, key_path, cert_path)
+
+    # Configure connection settings
+    mqtt_client.configureOfflinePublishQueueing(-1)
+    mqtt_client.configureDrainingFrequency(2)
+    mqtt_client.configureConnectDisconnectTimeout(10)
+    mqtt_client.configureMQTTOperationTimeout(5)
