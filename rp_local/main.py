@@ -1,3 +1,5 @@
+import time
+
 from rp_local.sensor.read import load_parameter, read_data
 from rp_local.sensor.process import get_payload_json
 from rp_local.mqtt.publish import configure_mqtt_client, publish_message
@@ -13,10 +15,14 @@ if __name__ == '__main__':
     address = 0x76
 
     bus = load_parameter(port, address)
-    humidity, temperature = read_data(bus, address)
 
-    json_payload = get_payload_json(humidity, temperature)
+    try:
+        while True:
+            humidity, temperature = read_data(bus, address)
+            json_payload = get_payload_json(humidity, temperature)
+            publish_message(mqtt_client, "thing/raspberrypi", json_payload)
+            time.sleep(5)
     
-    print(json_payload)
-
-    publish_message(mqtt_client, "thing/raspberrypi", json_payload)
+    except KeyboardInterrupt:
+        print("Script terminated by user.")
+        mqtt_client.disconnect()
