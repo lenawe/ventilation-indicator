@@ -56,6 +56,7 @@ resource "aws_iam_role" "this" {
 
 data "archive_file" "this" {
     type        = "zip"
-    source_file = "lambda_function.py"
-    output_path = "lambda_function.zip"
+    source_file = "./modules/lambda/lambda_function.py"
+    output_path = "./modules/lambda/lambda_function.zip"
+}
 }
