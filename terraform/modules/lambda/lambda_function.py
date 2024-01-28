@@ -1,4 +1,5 @@
 import boto3
+import json
 
 client = boto3.client('ses', region_name='eu-north-1')
 
@@ -27,3 +28,8 @@ def lambda_handler(event, context):
         },
         Source = sender
     )
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps("Email Sent Successfully. MessageId is: " + response['MessageId'])
+    }
