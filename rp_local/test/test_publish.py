@@ -28,3 +28,15 @@ class TestPublish(unittest.TestCase):
         mock_instance.connect.assert_called_once()
 
         self.assertEqual(result, mock_instance)
+    
+    def test_publish_message(self):
+        # Mock object
+        self.mock_client = MagicMock()
+        topic = 'test_topic'
+        json_message = '{"temperature": 30}'
+
+        # Call function
+        publish_message(self.mock_client, topic, json_message)
+
+        # Assert
+        self.mock_client.publish.assert_called_once_with(topic, json_message, 1)
