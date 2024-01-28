@@ -1,13 +1,13 @@
-import bme280.read as b_read
-import bme280.process as b_process
+from rp_local.sensor.read import load_parameter, read_data
+from rp_local.sensor.process import get_payload_json
 
 if __name__ == '__main__':
     port = 1
     address = 0x76
 
-    bus = b_read.load_parameter(port, address)
-    humidity, temperature = b_read.read_data(bus, address)
+    bus = load_parameter(port, address)
+    humidity, temperature = read_data(bus, address)
 
-    json_payload = b_process.get_payload_json(humidity, temperature)
+    json_payload = get_payload_json(humidity, temperature)
     
     print(json_payload)
