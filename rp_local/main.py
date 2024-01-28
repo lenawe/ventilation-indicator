@@ -1,6 +1,6 @@
 from rp_local.sensor.read import load_parameter, read_data
 from rp_local.sensor.process import get_payload_json
-from rp_local.mqtt.publish import configure_mqtt_client
+from rp_local.mqtt.publish import configure_mqtt_client, publish_message
 
 if __name__ == '__main__':
 
@@ -18,3 +18,5 @@ if __name__ == '__main__':
     json_payload = get_payload_json(humidity, temperature)
     
     print(json_payload)
+
+    publish_message(mqtt_client, "thing/raspberrypi", json_payload)

@@ -24,3 +24,6 @@ def configure_mqtt_client(aws_endpoint, client_id, topic):
     mqtt_client.connect()
 
     return mqtt_client
+
+def publish_message(mqtt_client, topic, json_message):
+    mqtt_client.publish(topic, json_message, 1)
