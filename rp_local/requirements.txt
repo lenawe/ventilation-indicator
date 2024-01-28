@@ -2,3 +2,4 @@ bme280
 smbus2
 pytest
 mock
+AWSIoTPythonSDK
