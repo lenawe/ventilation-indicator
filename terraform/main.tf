@@ -12,3 +12,9 @@ module "iot" {
     thing_name = var.thing_name
     certificate_path = var.certificate_path
 }
+
+module "lambda" {
+    source = "./modules/lambda"
+
+    thing_name = var.thing_name
+}
