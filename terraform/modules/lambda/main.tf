@@ -59,4 +59,14 @@ data "archive_file" "this" {
     source_file = "./modules/lambda/lambda_function.py"
     output_path = "./modules/lambda/lambda_function.zip"
 }
+
+resource "aws_lambda_function" "this" {
+    filename      = "./modules/lambda/lambda_function.zip"
+    function_name = "lambda_handler"
+    role          = aws_iam_role.this.arn
+    handler       = "lambda_function.lambda_handler"
+
+    source_code_hash = data.archive_file.this.output_base64sha256
+
+    runtime = "python3.9"
 }
