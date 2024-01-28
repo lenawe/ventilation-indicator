@@ -37,4 +37,13 @@ def configure_mqtt_client(aws_endpoint, client_id, topic):
         return None
 
 def publish_message(mqtt_client, topic, json_message):
-    mqtt_client.publish(topic, json_message, 1)
+    '''
+    Publish message to AWS IoT Core.
+    @param mqtt_client: MQTT client
+    @param topic: MQTT topic
+    @param json_message: JSON message
+    '''
+    try:
+        mqtt_client.publish(topic, json_message, 1)
+    except Exception as e:
+        print("Error publishing message:", str(e))
