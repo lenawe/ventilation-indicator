@@ -4,6 +4,12 @@ import json
 client = boto3.client('ses', region_name='eu-north-1')
 
 def lambda_handler(event, context):
+    '''
+    This function sends an email to the specified address.
+    @param event: The event passed to the function.
+    @param context: The context passed to the function.
+    '''
+
     message_text = "This is a mail for testing.",
     subject = "Please open the windows!"
     recipients = [] # enter destination address
