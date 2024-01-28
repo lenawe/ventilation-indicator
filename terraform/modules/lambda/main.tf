@@ -53,3 +53,9 @@ resource "aws_iam_role" "this" {
     assume_role_policy = data.aws_iam_policy_document.this.json
     managed_policy_arns = [ aws_iam_policy.this.arn ]
 }
+
+data "archive_file" "this" {
+    type        = "zip"
+    source_file = "lambda_function.py"
+    output_path = "lambda_function.zip"
+}

@@ -1,0 +1,1 @@
+print('Hello from lambda_function.py')
