@@ -1,8 +1,8 @@
 import time
 
-from rp_local.sensor.read import load_parameter, read_data
-from rp_local.sensor.process import get_payload_json
-from rp_local.mqtt.publish import configure_mqtt_client, publish_message
+from sensor.read import load_parameter, read_data
+from sensor.process import get_payload_json
+from mqtt.publish import configure_mqtt_client, publish_message
 
 if __name__ == '__main__':
 
