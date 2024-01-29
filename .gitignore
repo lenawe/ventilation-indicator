@@ -1,8 +1,5 @@
-rp_local/__pycache__/
-rp_local/sensor/__pycache__/
-rp_local/test/__pycache__/
-rp_local/mqtt/__pycache__/
-.vscode/settings.json
+**/__pycache__/*
+.vscode/
 certs/
 
 terraform/modules/lambda/lambda_function.zip
