@@ -52,3 +52,27 @@ def send_notification(message_text, subject, recipients, sender):
         'statusCode': 200,
         'body': json.dumps("Email Sent Successfully. MessageId is: " + response['MessageId'])
     }
+
+def get_outdoor_measurements(latitude, longitude, app_id):
+    '''
+    This function returns the outdoor temperature and humidity.
+    @param latitude: The latitude of the location.
+    @param longitude: The longitude of the location.
+    @param app_id: The app id for the openweathermap api.
+    @return: The outdoor temperature and humidity.
+    '''
+    
+    http = urllib3.PoolManager()
+    api = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=' + app_id + '&units=metric'
+    api_response = http.request('GET', api)
+    
+    data = api_response.data.decode('utf-8')
+
+    data = json.loads(data)
+    data = data["current"]
+
+    out_humidity = data["humidity"]
+    out_temperature = data["temp"]
+    
+    return out_temperature, out_humidity 
+    
