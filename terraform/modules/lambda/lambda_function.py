@@ -79,3 +79,21 @@ def get_outdoor_measurements(latitude, longitude, app_id):
     
     return out_temperature, out_humidity 
     
+def get_absolute_humidity(temperature, humidity_rel):
+    '''
+    This function returns the absolute humidity.
+    @param temperature: The temperature.
+    @param humidity_rel: The relative humidity.
+    @return: The absolute humidity.
+    '''
+    try:
+        temperature = float(temperature)
+        humidity_rel = float(humidity_rel)
+
+        e_exp = math.exp((17.67 * temperature) / (temperature + 243.5))
+        humidity_abs = (6.112 * e_exp * humidity_rel * 2.1674) / (273.15 + temperature)
+
+        return humidity_abs
+
+    except ValueError:
+        raise ValueError("Temperature and humidity must be numbers.")
