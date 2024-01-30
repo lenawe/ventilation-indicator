@@ -17,7 +17,16 @@ def lambda_handler(event, context):
     # OUTDOOR MEASUREMENTS
     out_temperature, out_humidity = get_outdoor_measurements(latidute, longitude, app_id)
 
-    message_text = "The outdoor temperature is " + str(out_temperature) + " degrees celsius and the outdoor humidity is " + str(out_humidity) + " percent."
+    message_text =  '''
+INDOOR MEASUREMENTS:
+Temperature: ''' + str(in_temperature) + ''' degrees celsius
+Relative humidity: ''' + str(in_humidity_rel) + ''' percent
+Absolute humidity: ''' + str(in_humidity_abs) + ''' g/m3
+
+OUTDOOR MEASUREMENTS:
+Temperature: ''' + str(out_temperature) + ''' degrees celsius
+Humidity: ''' + str(out_humidity) + ''' percent
+                    '''
     subject = "Please open the windows!"
     recipients = [] # enter destination address
     sender = 'test@mail.com' # enter source address
