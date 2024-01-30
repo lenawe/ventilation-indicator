@@ -133,3 +133,22 @@ def get_absolute_humidity_difference (in_humidity_abs, out_humidity_abs):
 
     except ValueError:
         raise ValueError("Humidity must be numbers.")
+
+def get_new_relative_humidity(temperature, humidity_abs):
+    '''
+    This function returns the relative humidity.
+    @param temperature: The temperature.
+    @param humidity_abs: The absolute humidity.
+    @return: The relative humidity.
+    '''
+    try:
+        temperature = float(temperature)
+        humidity_abs = float(humidity_abs)
+
+        e_exp = math.exp((17.67 * temperature) / (temperature + 243.5))
+        humidity_rel = (humidity_abs * (273.15 + temperature)) / (6.112 * e_exp * 2.1674)
+
+        return round(humidity_rel, 3)
+
+    except ValueError:
+        raise ValueError("Temperature and humidity must be numbers.")
