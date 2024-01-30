@@ -22,6 +22,9 @@ def lambda_handler(event, context):
     humidity_abs_difference = get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
     new_in_humidity_rel = get_new_relative_humidity(in_temperature, out_humidity_abs)
 
+    send_mail = False
+    if humidity_abs_difference > 0:
+        send_mail = True
 
     message_text =  '''
 INDOOR MEASUREMENTS:
@@ -42,7 +45,8 @@ The new relative humidity inside at a temperature of ''' + str(in_temperature) +
     recipients = [] # enter destination address
     sender = 'test@mail.com' # enter source address
     
-    return send_notification(message_text, subject, recipients, sender)
+    if send_mail: 
+        return send_notification(message_text, subject, recipients, sender)
 
 def send_notification(message_text, subject, recipients, sender):
     '''
