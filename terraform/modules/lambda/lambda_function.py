@@ -18,6 +18,9 @@ def lambda_handler(event, context):
     out_temperature, out_humidity_rel = get_outdoor_measurements(latidute, longitude, app_id)
     out_humidity_abs = get_absolute_humidity(out_temperature, out_humidity_rel)
 
+    # SUGGESTION
+    humidity_abs_difference = get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+
     message_text =  '''
 INDOOR MEASUREMENTS:
 Temperature: ''' + str(in_temperature) + ''' degrees celsius
