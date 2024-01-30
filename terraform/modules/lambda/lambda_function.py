@@ -8,8 +8,10 @@ def lambda_handler(event, context):
     @param event: The event passed to the function.
     @param context: The context passed to the function.
     '''
-
-    client = boto3.client('ses', region_name='eu-north-1')
+    latidute = '000' # Enter latitude of the location
+    longitude = '000' # Enter longitude of the location
+    app_id = 'ABC' # Enter APP_ID for openweathermap api
+    out_temperature, out_humidity = get_outdoor_measurements(latidute, longitude, app_id)
 
     message_text = "This is a mail for testing.",
     subject = "Please open the windows!"
