@@ -33,6 +33,10 @@ OUTDOOR MEASUREMENTS:
 Temperature: ''' + str(out_temperature) + ''' degrees celsius
 Humidity: ''' + str(out_humidity_rel) + ''' percent
 Absolute humidity: ''' + str(out_humidity_abs) + ''' g/m3
+
+SUGGESTION:
+The absolute humidity inside is ''' + str(humidity_abs_difference) + ''' g/m3 higher than outside. Please open the windows!
+The new relative humidity inside at a temperature of ''' + str(in_temperature) + ''' degrees celsius would be ''' + str(new_in_humidity_rel) + ''' percent.
                     '''
     subject = "Please open the windows!"
     recipients = [] # enter destination address
