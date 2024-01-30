@@ -106,7 +106,7 @@ def get_absolute_humidity(temperature, humidity_rel):
         e_exp = math.exp((17.67 * temperature) / (temperature + 243.5))
         humidity_abs = (6.112 * e_exp * humidity_rel * 2.1674) / (273.15 + temperature)
 
-        return humidity_abs
+        return round(humidity_abs, 3)
 
     except ValueError:
         raise ValueError("Temperature and humidity must be numbers.")
