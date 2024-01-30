@@ -26,7 +26,8 @@ Absolute humidity: ''' + str(in_humidity_abs) + ''' g/m3
 
 OUTDOOR MEASUREMENTS:
 Temperature: ''' + str(out_temperature) + ''' degrees celsius
-Humidity: ''' + str(out_humidity) + ''' percent
+Humidity: ''' + str(out_humidity_rel) + ''' percent
+Absolute humidity: ''' + str(out_humidity_abs) + ''' g/m3
                     '''
     subject = "Please open the windows!"
     recipients = [] # enter destination address
