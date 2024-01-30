@@ -95,5 +95,14 @@ class TestLambdaFunction(unittest.TestCase):
         # Assertion
         self.assertAlmostEqual(result, 50, places=3)
 
+    def test_get_new_relative_humidity_invalid(self):
+        # Test data
+        temperature = "invalid"
+        humidity_abs = 11.512806573859336
+
+        # Assertion
+        with self.assertRaises(ValueError):
+            get_new_relative_humidity(temperature, humidity_abs)
+
 if __name__ == '__main__':
     unittest.main()
