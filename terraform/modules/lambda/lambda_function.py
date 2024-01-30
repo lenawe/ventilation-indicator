@@ -9,9 +9,12 @@ def lambda_handler(event, context):
     @param event: The event passed to the function.
     @param context: The context passed to the function.
     '''
-    latidute = '000' # Enter latitude of the location
-    longitude = '000' # Enter longitude of the location
-    app_id = 'ABC' # Enter APP_ID for openweathermap api
+
+    # INDOOR MEASUREMENTS
+    in_temperature, in_humidity_rel = 20, 48
+    in_humidity_abs = get_absolute_humidity(in_temperature, in_humidity_rel)
+
+    # OUTDOOR MEASUREMENTS
     out_temperature, out_humidity = get_outdoor_measurements(latidute, longitude, app_id)
 
     message_text = "The outdoor temperature is " + str(out_temperature) + " degrees celsius and the outdoor humidity is " + str(out_humidity) + " percent."
