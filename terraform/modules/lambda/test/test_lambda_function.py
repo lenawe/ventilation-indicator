@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from ..lambda_function import lambda_handler, send_notification, get_outdoor_measurements, get_absolute_humidity
+from ..lambda_function import lambda_handler, send_notification, get_outdoor_measurements, get_absolute_humidity, get_absolute_humidity_difference
 
 class TestLambdaFunction(unittest.TestCase):
 
@@ -64,5 +64,15 @@ class TestLambdaFunction(unittest.TestCase):
         # Assertion
         self.assertAlmostEqual(result, 11.512806573859336, places=3)
 
+    def test_humidity_difference(self):
+        # Test data
+        in_humidity_abs = 15.5
+        out_humidity_abs = 10.2
+
+        # Call function
+        result = get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+
+        # Assertion
+        self.assertAlmostEqual(result, 5.3, places=3)
 if __name__ == '__main__':
     unittest.main()
