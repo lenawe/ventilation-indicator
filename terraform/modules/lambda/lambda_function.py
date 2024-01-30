@@ -15,7 +15,8 @@ def lambda_handler(event, context):
     in_humidity_abs = get_absolute_humidity(in_temperature, in_humidity_rel)
 
     # OUTDOOR MEASUREMENTS
-    out_temperature, out_humidity = get_outdoor_measurements(latidute, longitude, app_id)
+    out_temperature, out_humidity_rel = get_outdoor_measurements(latidute, longitude, app_id)
+    out_humidity_abs = get_absolute_humidity(out_temperature, out_humidity_rel)
 
     message_text =  '''
 INDOOR MEASUREMENTS:
