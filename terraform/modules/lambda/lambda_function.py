@@ -20,6 +20,8 @@ def lambda_handler(event, context):
 
     # SUGGESTION
     humidity_abs_difference = get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+    new_in_humidity_rel = get_new_relative_humidity(in_temperature, out_humidity_abs)
+
 
     message_text =  '''
 INDOOR MEASUREMENTS:
