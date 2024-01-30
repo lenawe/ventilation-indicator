@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     app_id = 'ABC' # Enter APP_ID for openweathermap api
     out_temperature, out_humidity = get_outdoor_measurements(latidute, longitude, app_id)
 
-    message_text = "This is a mail for testing.",
+    message_text = "The outdoor temperature is " + str(out_temperature) + " degrees celsius and the outdoor humidity is " + str(out_humidity) + " percent."
     subject = "Please open the windows!"
     recipients = [] # enter destination address
     sender = 'test@mail.com' # enter source address
