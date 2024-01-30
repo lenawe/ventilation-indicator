@@ -74,5 +74,15 @@ class TestLambdaFunction(unittest.TestCase):
 
         # Assertion
         self.assertAlmostEqual(result, 5.3, places=3)
+
+    def test_invalid_humidity(self):
+        # Test data
+        in_humidity_abs = "invalid"
+        out_humidity_abs = 10.2
+
+        # Assertion
+        with self.assertRaises(ValueError):
+            get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+
 if __name__ == '__main__':
     unittest.main()
