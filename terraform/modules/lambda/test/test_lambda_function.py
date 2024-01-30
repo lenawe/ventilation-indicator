@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from ..lambda_function import lambda_handler, send_notification, get_outdoor_measurements
+from ..lambda_function import send_notification, get_outdoor_measurements, get_absolute_humidity, get_absolute_humidity_difference, get_new_relative_humidity
 
 class TestLambdaFunction(unittest.TestCase):
 
@@ -52,6 +52,57 @@ class TestLambdaFunction(unittest.TestCase):
 
         # Assertion
         self.assertEqual(result, (25, 50))
+    
+    def test_get_absolute_humidity(self):
+        # Test data
+        temperature = 25
+        humidity_rel = 50
+
+        # Call function
+        result = get_absolute_humidity(temperature, humidity_rel)
+
+        # Assertion
+        self.assertAlmostEqual(result, 11.512806573859336, places=3)
+
+    def test_humidity_difference(self):
+        # Test data
+        in_humidity_abs = 15.5
+        out_humidity_abs = 10.2
+
+        # Call function
+        result = get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+
+        # Assertion
+        self.assertAlmostEqual(result, 5.3, places=3)
+
+    def test_invalid_humidity(self):
+        # Test data
+        in_humidity_abs = "invalid"
+        out_humidity_abs = 10.2
+
+        # Assertion
+        with self.assertRaises(ValueError):
+            get_absolute_humidity_difference(in_humidity_abs, out_humidity_abs)
+
+    def test_get_new_relative_humidity(self):
+        # Test data
+        temperature = 25
+        humidity_abs = 11.512806573859336
+
+        # Call function
+        result = get_new_relative_humidity(temperature, humidity_abs)
+
+        # Assertion
+        self.assertAlmostEqual(result, 50, places=3)
+
+    def test_get_new_relative_humidity_invalid(self):
+        # Test data
+        temperature = "invalid"
+        humidity_abs = 11.512806573859336
+
+        # Assertion
+        with self.assertRaises(ValueError):
+            get_new_relative_humidity(temperature, humidity_abs)
 
 if __name__ == '__main__':
     unittest.main()
