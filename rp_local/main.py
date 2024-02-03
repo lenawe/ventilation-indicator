@@ -22,7 +22,7 @@ if __name__ == '__main__':
             json_payload = get_payload_json(humidity, temperature)
             print("Humidity: " + str(humidity) + ", Temperature: " + str(temperature))
             publish_message(mqtt_client, "thing/raspberrypi", json_payload)
-            time.sleep(5)
+            time.sleep(600)
     
     except KeyboardInterrupt:
         print("Script terminated by user.")
