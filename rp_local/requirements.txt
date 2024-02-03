@@ -3,3 +3,4 @@ smbus2
 pytest
 mock
 AWSIoTPythonSDK
+yaml
