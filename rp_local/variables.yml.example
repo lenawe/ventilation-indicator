@@ -1,0 +1,3 @@
+aws_endpoint: id-ats.iot.region-1.amazonaws.com
+port: 1
+address: 0x76
