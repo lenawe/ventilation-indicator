@@ -40,3 +40,13 @@ variable "aws_secret_access_key" {
     type        = string
     sensitive   = true
 }
+
+variable "recipients" {
+    description = "The email address to send the notification to."
+    type        = list(string)
+}
+
+variable "sender" {
+    description = "The email address to send the notification from."
+    type        = string
+}

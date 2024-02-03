@@ -46,8 +46,8 @@ The absolute humidity inside is ''' + str(humidity_abs_difference) + ''' g/m3 hi
 The new relative humidity inside at a temperature of ''' + str(in_temperature) + ''' degrees celsius would be ''' + str(new_in_humidity_rel) + ''' percent.
                     '''
     subject = "Please open the windows!"
-    recipients = [] # enter destination address
-    sender = 'test@mail.com' # enter source address
+    recipients = json.loads(os.environ['recipients'])
+    sender = os.environ['sender']
     
     if send_mail: 
         return send_notification(message_text, subject, recipients, sender)

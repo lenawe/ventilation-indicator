@@ -21,4 +21,6 @@ module "lambda" {
     latitude = var.latitude
     longitude = var.longitude
     app_id = var.app_id
+    recipients = var.recipients
+    sender = var.sender
 }

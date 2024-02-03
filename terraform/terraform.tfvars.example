@@ -19,3 +19,7 @@ app_id = "1d3d734j5"
 # Credentials for AWS
 aws_access_key = "kEyId"
 aws_secret_access_key = "aCeSsKeY"
+
+# Destination and source address
+recipients = ["test@mail.com"]
+sender = "test@mail.org"

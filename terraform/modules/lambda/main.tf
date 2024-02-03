@@ -75,6 +75,8 @@ resource "aws_lambda_function" "this" {
             longitude = var.longitude
             latitude = var.latitude
             app_id = var.app_id
+            recipients = jsonencode(var.recipients)
+            sender = var.sender
         }
     }
 }
