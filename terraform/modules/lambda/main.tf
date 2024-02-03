@@ -69,6 +69,14 @@ resource "aws_lambda_function" "this" {
     source_code_hash = data.archive_file.this.output_base64sha256
 
     runtime = "python3.9"
+
+    environment {
+        variables = {
+            longitude = var.longitude
+            latitude = var.latitude
+            app_id = var.app_id
+        }
+    }
 }
 
 resource "aws_iot_topic_rule" "this" {

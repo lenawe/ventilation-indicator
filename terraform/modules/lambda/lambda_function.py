@@ -2,6 +2,7 @@ import boto3
 import json
 import urllib3
 import math
+import os
 
 def lambda_handler(event, context):
     '''
@@ -9,13 +10,16 @@ def lambda_handler(event, context):
     @param event: The event passed to the function.
     @param context: The context passed to the function.
     '''
+    latitude = os.environ['latitude']
+    longitude = os.environ['longitude']
+    app_id = os.environ['app_id']
 
     # INDOOR MEASUREMENTS
     in_temperature, in_humidity_rel = round(event['temperature'], 2), round(event['humidity'], 2)
     in_humidity_abs = get_absolute_humidity(in_temperature, in_humidity_rel)
 
     # OUTDOOR MEASUREMENTS
-    out_temperature, out_humidity_rel = get_outdoor_measurements(latidute, longitude, app_id)
+    out_temperature, out_humidity_rel = get_outdoor_measurements(latitude, longitude, app_id)
     out_humidity_abs = get_absolute_humidity(out_temperature, out_humidity_rel)
 
     # SUGGESTION
