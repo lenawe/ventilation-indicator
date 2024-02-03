@@ -76,7 +76,7 @@ resource "aws_iot_topic_rule" "this" {
   description = "Send temperature notification"
   enabled     = true
   sql         = <<EOF
-SELECT humidity as humidity, temperature as temperature, 'arn:aws:iot:eu-north-1:${var.connection_id}:thing/thing_rp' as notify_topic_arn FROM 'thing/raspberrypi'
+SELECT humidity as humidity, temperature as temperature, 'arn:aws:iot:eu-north-1:${var.connection_id}:thing/thing_rp' as notify_topic_arn FROM 'thing/raspberrypi  WHERE humidity > 55'
   EOF
   sql_version = "2016-03-23"
 
