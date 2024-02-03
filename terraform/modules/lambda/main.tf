@@ -70,3 +70,17 @@ resource "aws_lambda_function" "this" {
 
     runtime = "python3.9"
 }
+
+resource "aws_iot_topic_rule" "this" {
+  name        = "send_notification"
+  description = "Send temperature notification"
+  enabled     = true
+  sql         = <<EOF
+SELECT humidity as humidity, temperature as temperature, 'arn:aws:iot:eu-north-1:${var.connection_id}:thing/thing_rp' as notify_topic_arn FROM 'thing/raspberrypi'
+  EOF
+  sql_version = "2016-03-23"
+
+  lambda {
+    function_arn = aws_lambda_function.this.arn
+  }
+}
