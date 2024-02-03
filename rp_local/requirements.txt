@@ -1,4 +1,4 @@
-bme280
+RPI.BME280
 smbus2
 pytest
 mock
