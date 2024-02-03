@@ -11,7 +11,7 @@ def lambda_handler(event, context):
     '''
 
     # INDOOR MEASUREMENTS
-    in_temperature, in_humidity_rel = 20, 48
+    in_temperature, in_humidity_rel = round(event['temperature'], 2), round(event['humidity'], 2)
     in_humidity_abs = get_absolute_humidity(in_temperature, in_humidity_rel)
 
     # OUTDOOR MEASUREMENTS
