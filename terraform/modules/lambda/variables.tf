@@ -8,3 +8,28 @@ variable "connection_id" {
     description = "The connection id of the thing to create."
     type        = string
 }
+
+variable "latitude" {
+    description = "The latitude of the raspberry pi."
+    type        = string
+}
+
+variable "longitude" {
+    description = "The longitude of the raspberry pi."
+    type        = string
+}
+
+variable "app_id" {
+    description = "The app id for openweathermap api."
+    type        = string
+}
+
+variable "recipients" {
+    description = "The email address to send the notification to."
+    type        = list(string)
+}
+
+variable "sender" {
+    description = "The email address to send the notification from."
+    type        = string
+}

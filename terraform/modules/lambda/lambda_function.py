@@ -2,6 +2,7 @@ import boto3
 import json
 import urllib3
 import math
+import os
 
 def lambda_handler(event, context):
     '''
@@ -9,13 +10,16 @@ def lambda_handler(event, context):
     @param event: The event passed to the function.
     @param context: The context passed to the function.
     '''
+    latitude = os.environ['latitude']
+    longitude = os.environ['longitude']
+    app_id = os.environ['app_id']
 
     # INDOOR MEASUREMENTS
-    in_temperature, in_humidity_rel = 20, 48
+    in_temperature, in_humidity_rel = round(event['temperature'], 2), round(event['humidity'], 2)
     in_humidity_abs = get_absolute_humidity(in_temperature, in_humidity_rel)
 
     # OUTDOOR MEASUREMENTS
-    out_temperature, out_humidity_rel = get_outdoor_measurements(latidute, longitude, app_id)
+    out_temperature, out_humidity_rel = get_outdoor_measurements(latitude, longitude, app_id)
     out_humidity_abs = get_absolute_humidity(out_temperature, out_humidity_rel)
 
     # SUGGESTION
@@ -42,8 +46,8 @@ The absolute humidity inside is ''' + str(humidity_abs_difference) + ''' g/m3 hi
 The new relative humidity inside at a temperature of ''' + str(in_temperature) + ''' degrees celsius would be ''' + str(new_in_humidity_rel) + ''' percent.
                     '''
     subject = "Please open the windows!"
-    recipients = [] # enter destination address
-    sender = 'test@mail.com' # enter source address
+    recipients = json.loads(os.environ['recipients'])
+    sender = os.environ['sender']
     
     if send_mail: 
         return send_notification(message_text, subject, recipients, sender)
