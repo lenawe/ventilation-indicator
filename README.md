@@ -9,8 +9,10 @@ This project aims to provide a solution that monitors the humidity status in a g
 
 ### Set-up
 1. For ensuring a stable connection of your sensor, solder a pin header first.
-2. Connect sensor to the Raspberry Pi using the jumper wires following the following image: 
-![Connection of BME280 sensor to Raspberry Pi](https://projects-static.raspberrypi.org/projects/build-your-own-weather-station/280233af49c74aed6e178ee9f89fb8a713379229/en/images/bme280_bb.png)
+2. Connect sensor to the Raspberry Pi using the jumper wires following the following image:
+<p align="center">
+  <img src='https://pypi-camo.freetls.fastly.net/e1c7e61175cad5b70af740e8305ea3b1e50b1104/68747470733a2f2f692e696d6775722e636f6d2f38693373536c432e706e67' width='300' alt="Connection of BME280 sensor to Raspberry Pi" style="transform:rotate(90deg);">
+</p>
 3. In case you set-up your raspberry pi the very first time, there are numerous guides to be followed. One example is given here: [How to Set Up a Headless Raspberry Pi, Without Ever Attaching a Monitor](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
 
 ## Installation
@@ -25,27 +27,39 @@ This project aims to provide a solution that monitors the humidity status in a g
 ```
 git clone https://github.com/lenawe/ventilation-indicator.git
 ```
-3. Preferably in git bash, navigate to terraform folder:
+3. Create AWS IoT client certificates acording to the official documentation [AWS](https://docs.aws.amazon.com/iot/latest/developerguide/device-certs-create.html). Store them in the folder ```rp_local/certs```.
+4. Preferably in git bash, navigate to terraform folder:
 ```
 cd terraform
 ```
-4. Initialise terraform:
+5. Set-up a user with the necessary privileges. Retrieve an AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in AWS according to the [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+6. Create a copy ```terraform.tfvars``` from ```terraform.tfvars.example``` and set valid values for all variables.
+7. Initialise terraform:
 ```
 terraform init
 ```
-5. Retrieve an AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in AWS according to the [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). Enter them in the console:
+ Enter them in the console:
 ```
 export AWS_ACCESS_KEY_ID=kEyId
 export AWS_SECRET_ACCESS_KEY=aCeSsKeY
 ```
-6. Check changes in terraform and apply them in AWS:
+8. Check changes in terraform and apply them in AWS:
 ```
 terraform plan
 terraform apply
 ```
-7. Copy folder to raspberry pi:
+9. Navigate to root folder and copy folder ```rp_local``` to your raspberry pi:
 ```
+cd..
 scp -r rp_local user@raspberrypi:./ventilation-indicator
+```
+10. On the Raspberry Pi, create a new Python environment, install the required packages, and start the main file.
+```
+python3 -m venv awsenv
+source awsenv/bin/activate
+cd ventilation-indicator
+pip install -r requirements.txt
+python3 main.py
 ```
 
 ## Run local unit tests
