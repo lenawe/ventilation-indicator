@@ -13,7 +13,7 @@ This project aims to provide a solution that monitors the humidity status in a g
 <p align="center">
   <img src='https://pypi-camo.freetls.fastly.net/e1c7e61175cad5b70af740e8305ea3b1e50b1104/68747470733a2f2f692e696d6775722e636f6d2f38693373536c432e706e67' width='300' alt="Connection of BME280 sensor to Raspberry Pi" style="transform:rotate(90deg);">
 </p>
-3. In case you set-up your Raspberry Pi the very first time, there are numerous guides to be followed. One example is given here: [How to Set Up a Headless Raspberry Pi, Without Ever Attaching a Monitor](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
+3. In case you set-up your Raspberry Pi the very first time, there are numerous guides to be followed. One example is given here: https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html
 
 ## Installation
 ### Software required to be installed on your laptop
