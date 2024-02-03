@@ -45,8 +45,8 @@ export AWS_SECRET_ACCESS_KEY=aCeSsKeY
 ```
 8. Check changes in terraform and apply them in AWS:
 ```
-terraform plan
-terraform apply
+terraform plan -var-file="terraform.tfvars"
+terraform apply -var-file="terraform.tfvars"
 ```
 9. Navigate to root folder and copy folder ```rp_local``` to your raspberry pi:
 ```
