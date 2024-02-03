@@ -20,6 +20,7 @@ if __name__ == '__main__':
         while True:
             humidity, temperature = read_data(bus, address)
             json_payload = get_payload_json(humidity, temperature)
+            print("Humidity: " + str(humidity) + ", Temperature: " + str(temperature))
             publish_message(mqtt_client, "thing/raspberrypi", json_payload)
             time.sleep(5)
     
