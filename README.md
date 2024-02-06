@@ -62,3 +62,6 @@ https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/2 </
 https://www.terraform-best-practices.com/examples</br>
 https://docs.aws.amazon.com/iot/</br>
 https://openweathermap.org/api
+
+## Collaborators
+In case you would like to collaborate in this project, please find all open tasks and issues in the linked [Jira board](https://data-eng.atlassian.net/jira/software/projects/VI/boards/2).
