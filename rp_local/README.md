@@ -2,7 +2,7 @@
 
 This directory contains the configuration for setting up the Ventilation Indicator project on the Raspberry Pi.
 
-## Table of Contents
+## Table of contents
 - [Prerequisites](#prerequisites)
 - [Structure of the Terraform configuration](#structure-of-the-terraform-configuration)
 - [Instructions for set-up](#instructions-for-set-up)

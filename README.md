@@ -3,9 +3,12 @@ This project aims to provide a solution that monitors the humidity status in a g
 
 ## Table of contents
 - [Hardware requirements](#hardware-requirements)
-- [Installation](#installation)
-- [Run unit tests](#run-unit-tests)
+- [Software requirements](#software-requirements)
+- [Structure of the project](#structure-of-the-project)
+- [Set-up the project in local environment](#set-up-the-project-in-local-environment)
+- [Testing](#testing)
 - [References](#references)
+- [Collaborators](#collaborators)
 
 ## Hardware requirements
 ### Required components
