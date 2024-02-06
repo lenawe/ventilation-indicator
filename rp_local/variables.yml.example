@@ -1,3 +1,8 @@
+# Endpoint of the AWS IoT Core
 aws_endpoint: id-ats.iot.region-1.amazonaws.com
+
+# Port used for communication
 port: 1
+
+# Address of the sensor
 address: 0x76
