@@ -1,6 +1,6 @@
-RPI.BME280
-smbus2
-pytest
-mock
-AWSIoTPythonSDK
-pyyaml
+RPI.BME280=0.2.4
+smbus2==0.4.3
+pytest==7.4.4
+mock==5.1.0
+AWSIoTPythonSDK==1.5.2
+pyyaml==6.0.1

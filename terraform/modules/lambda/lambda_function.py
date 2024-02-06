@@ -98,11 +98,14 @@ def get_outdoor_measurements(latitude, longitude, app_id):
     '''
     
     http = urllib3.PoolManager()
+
+    # Get the data from the OpenWeatherMap API
     api = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=' + app_id + '&units=metric'
     api_response = http.request('GET', api)
     
     data = api_response.data.decode('utf-8')
 
+    # Convert the data to a JSON object
     data = json.loads(data)
     data = data["current"]
 
@@ -122,6 +125,7 @@ def get_absolute_humidity(temperature, humidity_rel):
         temperature = float(temperature)
         humidity_rel = float(humidity_rel)
 
+        # Calculate the absolute humidity
         e_exp = math.exp((17.67 * temperature) / (temperature + 243.5))
         humidity_abs = (6.112 * e_exp * humidity_rel * 2.1674) / (273.15 + temperature)
 
@@ -141,6 +145,7 @@ def get_absolute_humidity_difference (in_humidity_abs, out_humidity_abs):
         in_humidity_abs = float(in_humidity_abs)
         out_humidity_abs = float(out_humidity_abs)
 
+        # Calculate the absolute humidity difference
         humidity_abs_difference = in_humidity_abs - out_humidity_abs
 
         return round(humidity_abs_difference, 3)
@@ -159,6 +164,7 @@ def get_new_relative_humidity(temperature, humidity_abs):
         temperature = float(temperature)
         humidity_abs = float(humidity_abs)
 
+        # Calculate the new relative humidity
         e_exp = math.exp((17.67 * temperature) / (temperature + 243.5))
         humidity_rel = (humidity_abs * (273.15 + temperature)) / (6.112 * e_exp * 2.1674)
 

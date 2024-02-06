@@ -1,6 +1,12 @@
 # Recommender system for ventilation of interior rooms
 This project aims to provide a solution that monitors the humidity status in a given environment. In case a certain threshold is exceeded, it will send a mail notification to a list of recipients.
 
+## Table of contents
+- [Hardware requirements](#hardware-requirements)
+- [Installation](#installation)
+- [Run unit tests](#run-unit-tests)
+- [References](#references)
+
 ## Hardware requirements
 ### Required components
 + [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
@@ -58,7 +64,7 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
-## Run local unit tests
+## Run unit tests
 ### Run unit tests on Raspberry Pi
 1. Navigate to ```cd ventilation-indicator/test``` folder.
 2. Run unit tests:
@@ -66,7 +72,7 @@ python3 main.py
 python -m unittest discover
 ```
 
-### Run local unit tests for Lambda function
+### Run unit tests for Lambda function
 1. Navigate to ```cd ventilation-indicator/terraform/modules/lambda``` folder.
 2. Execute pip install:
 ```
