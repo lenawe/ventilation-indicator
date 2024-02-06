@@ -13,7 +13,7 @@ This project aims to provide a solution that monitors the humidity status in a g
 + Sensor [BME280](https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/)
 + Jumper wires
 
-### Set-up
+### Instructions for set-up
 1. For ensuring a stable connection of your sensor, solder a pin header first.
 2. Connect the sensor to the Raspberry Pi using the jumper wires following the following image:
 <p align="center">
@@ -21,69 +21,47 @@ This project aims to provide a solution that monitors the humidity status in a g
 </p>
 3. In case you set-up your Raspberry Pi the very first time, there are numerous guides to be followed. One example is given here: https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html
 
-## Installation
-### Software required to be installed on your laptop
+## Software requirements
+### Required software
 + PuTTY
 + [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 + Text editor recommended, e.g. [Visual Studio Code](https://code.visualstudio.com/)
 
-### Local set-up
-1. If not available, set-up [AWS](https://aws.amazon.com/) account.
-2. Clone the repository:
+### Instructions for set-up
++ Create [AWS](https://aws.amazon.com/) account
++ Create account on [OpenWeather](https://openweathermap.org/api) to access their API
+
+## Structure of the project
+This repository is split into two folders. The code that belongs to the Raspberry Pi and is required to run the local program on it is contained in the folder `rp_local`. The files that will be used to deploy the infrastructure on AWS belong to the folder `terraform`.
+
+## Set-up the project in local environment
+1. Clone the repository:
 ```
 git clone https://github.com/lenawe/ventilation-indicator.git
 ```
-3. Create AWS IoT client certificates acording to the official documentation [AWS](https://docs.aws.amazon.com/iot/latest/developerguide/device-certs-create.html). Store them in the folder ```rp_local/certs```.
-4. Create a copy ```variables.yml``` from ```variables.yml.example``` and set valid values for all variables.
-5. Preferably in git bash, navigate to terraform folder:
+2. Create AWS IoT client certificates acording to the official documentation [AWS](https://docs.aws.amazon.com/iot/latest/developerguide/device-certs-create.html). Store them in the folder ```rp_local/certs```.
+3. From the root directory, navigate to terraform folder:
 ```
 cd terraform
 ```
-6. Set-up a user with the necessary privileges. Retrieve an AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in AWS according to the [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
-7. Create a copy ```terraform.tfvars``` from ```terraform.tfvars.example``` and set valid values for all variables.
-8. Initialise terraform:
-```
-terraform init
-```
-9. Check changes in terraform and apply them in AWS:
-```
-terraform plan -var-file="terraform.tfvars"
-terraform apply -var-file="terraform.tfvars"
-```
-10. Navigate to root folder and copy folder ```rp_local``` to your Raspberry Pi:
+4. The instructions on how to deploy the infrastructure to AWS are listed in the `README.md` in the `terraform` folder. The steps listed [there](terraform/README.md) should be followed before proceeding.
+5. Navigate back to the root folder.
+6. Create a copy ```rp_local/variables.yml``` from ```rp_local/variables.yml.example``` and set valid values for all [variables](rp_local/README.md/#variables).
+7. Copy folder ```rp_local``` as ```ventilation-indicator``` to your Raspberry Pi:
 ```
 cd..
 scp -r rp_local user@raspberrypi:./ventilation-indicator
 ```
-11. On the Raspberry Pi, create a new Python environment, install the required packages, and start the main file.
-```
-python3 -m venv awsenv
-source awsenv/bin/activate
-cd ventilation-indicator
-pip install -r requirements.txt
-python3 main.py
-```
+8. In order to run the program on the Raspberry Pi, follow the [instructions](rp_local/README.md) described in the `README.md` of the `rp_local` folder.
 
-## Run unit tests
-### Run unit tests on Raspberry Pi
-1. Navigate to ```cd ventilation-indicator/test``` folder.
-2. Run unit tests:
-```
-python -m unittest discover
-```
-
-### Run unit tests for Lambda function
-1. Navigate to ```cd ventilation-indicator/terraform/modules/lambda``` folder.
-2. Execute pip install:
-```
-pip install pytest-socket
-```
-3. Run unit tests:
-```
-pytest -v --disable-socket -s test/
-```
+## Testing
+The functionality of the code in this repository is ensured via unit tests. An extensive documentation about the [unit tests used in the Lambda function](terraform/modules/lambda/test/TESTING.md) and for those [used for the code on the Raspberry Pi](rp_local/test/TESTING.md) is provided in the respective directory.
 
 ## References
 https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/2 </br>
 https://www.terraform-best-practices.com/examples</br>
-https://docs.aws.amazon.com/iot/
+https://docs.aws.amazon.com/iot/</br>
+https://openweathermap.org/api
+
+## Collaborators
+In case you would like to collaborate in this project, please find all open tasks and issues in the linked [Jira board](https://data-eng.atlassian.net/jira/software/projects/VI/boards/2).
