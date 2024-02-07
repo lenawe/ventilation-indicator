@@ -67,7 +67,7 @@ terraform init
 ```
 terraform plan -var-file="terraform.tfvars"
 ```
-4. Apply changes in AWS:
+5. Apply changes in AWS:
 ```
 terraform apply -var-file="terraform.tfvars"
 ```

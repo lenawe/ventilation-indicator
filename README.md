@@ -17,7 +17,7 @@ This project aims to provide a solution that monitors the humidity status in a g
 + Jumper wires
 
 ### Instructions for set-up
-1. For ensuring a stable connection of your sensor, solder a pin header first.
+1. For ensuring a stable connection of your sensor, solder the pin headers first.
 2. Connect the sensor to the Raspberry Pi using the jumper wires following the following image:
 <p align="center">
   <img src='https://pypi-camo.freetls.fastly.net/e1c7e61175cad5b70af740e8305ea3b1e50b1104/68747470733a2f2f692e696d6775722e636f6d2f38693373536c432e706e67' width='300' alt="Connection of BME280 sensor to Raspberry Pi" style="transform:rotate(90deg);">
