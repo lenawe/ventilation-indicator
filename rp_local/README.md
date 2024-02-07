@@ -4,7 +4,7 @@ This directory contains the configuration for setting up the Ventilation Indicat
 
 ## Table of contents
 - [Prerequisites](#prerequisites)
-- [Structure of the Terraform configuration](#structure-of-the-terraform-configuration)
+- [Structure of the Raspberry Pi configuration](#structure-of-the-raspberry-pi-configuration)
 - [Instructions for set-up](#instructions-for-set-up)
 
 ## Prerequisites
